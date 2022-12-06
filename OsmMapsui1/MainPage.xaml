@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mapsui="clr-namespace:Mapsui.UI.Forms;assembly=Mapsui.UI.Forms"
+             x:Class="OsmMapsui1.MainPage">
+
+    <StackLayout x:Name="stackLayout1">
+        <Label x:Name="labelTytul" Text="- mapa -"  HorizontalOptions="Center" />
+        <mapsui:MapView x:Name="mapView"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        IsMyLocationButtonVisible="True"
+                        IsNorthingButtonVisible="True"
+                        IsZoomButtonVisible="True"
+                        Margin="5"                        
+                        />
+
+        <Grid BackgroundColor="LightGray" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="lat" 
+                   Grid.Column="0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   />
+            <Entry x:Name="entryLatitude" 
+                   Grid.Column="1"
+                   Text="0"
+                   Keyboard="Numeric"
+                   TextChanged="EntryLatitudeLongitude_TextChanged"
+                   />
+            <Label Text="long" 
+                   Grid.Column="2"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   />
+            <Entry x:Name="entryLongitude" 
+                   Grid.Column="3"
+                   Text="0"
+                   Keyboard="Numeric"
+                   TextChanged="EntryLatitudeLongitude_TextChanged"
+                   />
+
+        </Grid>
+        
+    </StackLayout>
+</ContentPage>
