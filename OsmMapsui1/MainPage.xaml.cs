@@ -14,15 +14,18 @@ namespace OsmMapsui1
         {
             InitializeComponent();
 
+            //inicjacja mapy
             var map = new Mapsui.Map
             {
                 CRS = "EPSG:3857",
                 Transformation = new Mapsui.Projection.MinimalTransformation()
             };
 
+            //załadowanie warstwy z danymi OSM
             var tileLayer = Mapsui.Utilities.OpenStreetMap.CreateTileLayer();
             map.Layers.Add( tileLayer );
 
+            //linijka skali
             var scaleBarWidget = new Mapsui.Widgets.ScaleBar.ScaleBarWidget(map)
             {
                 TextColor = Mapsui.Styles.Color.Black,
@@ -32,42 +35,61 @@ namespace OsmMapsui1
             };
             map.Widgets.Add( scaleBarWidget );                       
 
+
             mapView.Map = map;
 
             //nowa pozycja
             var position1 = new Mapsui.UI.Forms.Position(53.1, 23.1);
             mapView.MyLocationLayer.UpdateMyLocation( position1 );
 
-            //aktualna pozycja
+            //dane z aktualnej pozycji
             var myPosition = new Point( position1.Latitude, position1.Longitude );
             labelTytul.Text = "szer: " + myPosition.X.ToString()
                 + " dł: " + myPosition.Y.ToString();
 
-            //własny pin na pozycji
-            var position2 = new Mapsui.UI.Forms.Position(53.3, 23.3);
-            var myPin = new Mapsui.UI.Forms.Pin
-            {
-                Type = PinType.Pin,
-                Position = position2,
-                Label = "custom pin",
-                Address = "custom detail info",
-                Color = Color.BlueViolet,
-                Scale = 0.3f //domyślnie 1
-            };
-            mapView.Pins.Add( myPin );
-
-            var position3 = new Mapsui.UI.Forms.Position(53.5, 23.5);
+            //standardowy pin
+            var position2 = new Mapsui.UI.Forms.Position(54.0, 24.0);
             var myPin1 = new Mapsui.UI.Forms.Pin
             {
                 Type = PinType.Pin,
-                Position = position3,
-                Label = "custom pin",
-                Address = "custom detail info",
+                Position = position2,
+                Label = "54.0 24.0",
+                Address = "pin 1",
                 Color = Color.BlueViolet,
-                Scale= 0.5f
+                Scale = 1f //domyślnie 1
+            };           
+            mapView.Pins.Add( myPin1 );
+
+
+
+
+            //zmaiana koloru pinu i wiekości
+            var myPin2 = new Mapsui.UI.Forms.Pin
+            {
+                Type = PinType.Pin,
+                Position = new Mapsui.UI.Forms.Position(53.5, 23.5),
+                Label = "53.5 23.5 ",
+                Address = "pin 2",
+                Color = Color.IndianRed,
+                Scale= 0.3f          
             };
-            mapView.Pins.Add(myPin1);
-            myPin.ShowCallout();
+            mapView.Pins.Add(myPin2);
+
+            //pokaż label ShowCallout
+            var myPin3 = new Mapsui.UI.Forms.Pin
+            {
+                Type = PinType.Pin,
+                Position = new Mapsui.UI.Forms.Position(55, 23),
+                Label = "szer:55 dł:23",
+                
+                Address = "pin 3",
+                Color = Color.Beige,
+                Scale = 0.1f
+            };
+            mapView.Pins.Add(myPin3);
+            myPin3.ShowCallout();
+
+
         }
 
 
