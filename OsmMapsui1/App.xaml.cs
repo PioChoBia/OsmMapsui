@@ -10,7 +10,7 @@ namespace OsmMapsui1
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Page0();
         }
 
         protected override void OnStart()

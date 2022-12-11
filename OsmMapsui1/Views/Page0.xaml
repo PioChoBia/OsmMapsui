@@ -2,19 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mapsui="clr-namespace:Mapsui.UI.Forms;assembly=Mapsui.UI.Forms"
-             x:Class="OsmMapsui1.Page1">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                HorizontalOptions="Center" />
-            <mapsui:MapView x:Name="mapView"
+             x:Class="OsmMapsui1.Page0">
+    <StackLayout>
+        <Label x:Name="labelTytul" 
+               FontSize="Medium"
+               Text="- mapa -"  
+               HorizontalOptions="Center" />
+        <mapsui:MapView x:Name="mapView"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
                         IsMyLocationButtonVisible="True"
                         IsNorthingButtonVisible="True"
                         IsZoomButtonVisible="True"
-                        Margin="5"                        
+                        Margin="5"   
+                        BackgroundColor="CadetBlue"
+                        MapClicked="mapView_MapClicked"   
+                        PinClicked="mapView_PinClicked"
                         />
-        </StackLayout>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>
